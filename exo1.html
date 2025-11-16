@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance System</title>
+    <link rel="stylesheet" href="exo1.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Attendance System</h1>
+
+        <!-- Search and Controls Section -->
+        <div class="controls">
+            <div class="search-section">
+                <input type="text" id="searchInput" placeholder="Search by Name...">
+            </div>
+            <div class="buttons-section">
+                <button id="showReportBtn">Show Report</button>
+                <button id="highlightExcellentBtn">Highlight Excellent Students</button>
+                <button id="resetColorsBtn">Reset Colors</button>
+                <button id="sortAbsencesAsc">Sort by Absences (Ascending)</button>
+                <button id="sortParticipationDesc">Sort by Participation (Descending)</button>
+            </div>
+        </div>
+
+        <!-- Sort Info -->
+        <div id="sortInfo"></div>
+
+        <!-- Report Section -->
+        <div id="reportSection" class="report-section" style="display: none;">
+            <h3>Attendance Report</h3>
+            <div id="reportContent"></div>
+            <div id="chartContainer"></div>
+        </div>
+
+        <!-- Attendance Table -->
+        <table id="attendanceTable">
+            <thead>
+                <tr>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>S1<br>P</th>
+                    <th>S1<br>Pa</th>
+                    <th>S2<br>P</th>
+                    <th>S2<br>Pa</th>
+                    <th>S3<br>P</th>
+                    <th>S3<br>Pa</th>
+                    <th>S4<br>P</th>
+                    <th>S4<br>Pa</th>
+                    <th>S5<br>P</th>
+                    <th>S5<br>Pa</th>
+                    <th>S6<br>P</th>
+                    <th>S6<br>Pa</th>
+                    <th>Absences</th>
+                    <th>Participation</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Initial data will be populated by JavaScript -->
+            </tbody>
+        </table>
+
+        <!-- Add Student Form -->
+        <div class="form-section">
+            <h3>Add New Student</h3>
+            <form id="addStudentForm">
+                <div class="form-group">
+                    <label for="studentId">Student ID:</label>
+                    <input type="text" id="studentId" name="studentId">
+                    <span class="error" id="studentIdError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName">
+                    <span class="error" id="lastNameError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName">
+                    <span class="error" id="firstNameError"></span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email">
+                    <span class="error" id="emailError"></span>
+                </div>
+                <button type="submit">Add Student</button>
+            </form>
+            <div id="confirmationMessage" class="confirmation"></div>
+        </div>
+    </div>
+
+    <script src="exo1.js"></script>
+</body>
+</html>
