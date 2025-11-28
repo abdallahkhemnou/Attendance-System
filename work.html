@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Attendance System</title>
+    <link rel="stylesheet" href="work.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Student Attendance System</h1>
+
+        <div class="controls">
+            <div class="search-section">
+                <input type="text" id="searchInput" placeholder="Search by Name..." />
+            </div>
+
+            <div class="buttons-section">
+                <button id="showReportBtn">Show Report</button>
+                <button id="highlightExcellentBtn">Highlight Excellent</button>
+                <button id="resetColorsBtn">Reset Colors</button>
+                <button id="sortAbsencesAsc">Sort Absences ↑</button>
+                <button id="sortParticipationDesc">Sort Participation ↓</button>
+            </div>
+        </div>
+
+        <div id="sortInfo"></div>
+
+        <div id="reportSection" class="report-section" style="display: none;">
+            <h3>Attendance Report</h3>
+            <div id="reportContent"></div>
+            <div id="chartContainer"></div>
+        </div>
+
+        <table id="attendanceTable">
+            <thead>
+                <tr>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+
+                    <th>S1 P</th><th>S1 Pa</th>
+                    <th>S2 P</th><th>S2 Pa</th>
+                    <th>S3 P</th><th>S3 Pa</th>
+                    <th>S4 P</th><th>S4 Pa</th>
+                    <th>S5 P</th><th>S5 Pa</th>
+                    <th>S6 P</th><th>S6 Pa</th>
+
+                    <th>Absences</th>
+                    <th>Participation</th>
+                    <th>Message</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <div class="form-section">
+            <h3>Add Student</h3>
+            <form id="addStudentForm">
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input type="text" id="lastName" />
+                </div>
+
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" id="firstName" />
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" />
+                </div>
+
+                <button type="submit">Add Student</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="work.js"></script>
+</body>
+</html>
