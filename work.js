@@ -24,10 +24,6 @@ $(document).ready(function () {
     let students = [...initialStudents];
 
     rebuildTable();
-
-    // ================================
-    // BUTTONS (delegated)
-    // ================================
     $(document).on("click", "#sortAbsencesAsc", () => {
         clearHighlights();
         students.sort((a, b) => calculateAbsences(a) - calculateAbsences(b));
@@ -54,18 +50,15 @@ $(document).ready(function () {
         showReport();
     });
 
-    // SEARCH
+   
     $(document).on("input", "#searchInput", filterTable);
 
-    // ADD STUDENT
+    
     $(document).on("submit", "#addStudentForm", function (e) {
         e.preventDefault();
         addStudent();
     });
 
-    // ================================
-    // TOGGLE ATTENDANCE/PARTICIPATION
-    // ================================
     $(document).on("click", ".attendance-cell", function () {
         let s = $(this).data("s");
         let i = $(this).data("i");
@@ -81,10 +74,6 @@ $(document).ready(function () {
         students[s].participation[i] = !students[s].participation[i];
         rebuildTable();
     });
-
-    // ================================
-    // BUILD TABLE
-    // ================================
     function rebuildTable() {
         let tbody = $("#attendanceTable tbody");
         tbody.empty();
@@ -110,12 +99,8 @@ $(document).ready(function () {
             tbody.append(tr);
         });
 
-        filterTable(); // keep search active after sorting
+        filterTable();
     }
-
-    // ================================
-    // SEARCH FIXED (NO MORE INDEX BUG)
-    // ================================
     function filterTable() {
         const txt = $("#searchInput").val().toLowerCase();
 
@@ -128,9 +113,6 @@ $(document).ready(function () {
         });
     }
 
-    // ================================
-    // HIGHLIGHT
-    // ================================
     function highlightExcellent() {
         $("#attendanceTable tbody tr").each(function (rowIndex) {
             let student = students[rowIndex];
@@ -141,10 +123,6 @@ $(document).ready(function () {
     function clearHighlights() {
         $("#attendanceTable tbody tr").removeClass("highlighted");
     }
-
-    // ================================
-    // REPORT
-    // ================================
     function showReport() {
         $("#reportContent").html(`
             Total Students: ${students.length}<br>
@@ -164,10 +142,6 @@ $(document).ready(function () {
             container.append(`<div class="bar" style="height:${abs * 30}px;"></div>`);
         });
     }
-
-    // ================================
-    // ADD STUDENT
-    // ================================
     function addStudent() {
         let ln = $("#lastName").val();
         let fn = $("#firstName").val();
@@ -183,10 +157,6 @@ $(document).ready(function () {
 
         rebuildTable();
     }
-
-    // ================================
-    // HELPERS
-    // ================================
     function calculateAbsences(s) {
         return s.attendance.filter(a => !a).length;
     }

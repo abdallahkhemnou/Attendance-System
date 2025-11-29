@@ -7,7 +7,7 @@ function getDBConnection() {
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         return $conn;
     } catch(PDOException $e) {
-        // Log error to file
+        
         error_log("Database connection failed: " . $e->getMessage(), 3, "errors.log");
         return null;
     }

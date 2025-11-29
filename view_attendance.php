@@ -1,23 +1,16 @@
 <?php
-// Get date from query parameter or use today's date
 $date = isset($_GET['date']) ? $_GET['date'] : date('Y-m-d');
 $attendance_file = "attendance_{$date}.json";
-
-// Load attendance data if exists
 $attendance_data = [];
 if (file_exists($attendance_file)) {
     $json_data = file_get_contents($attendance_file);
     $attendance_data = json_decode($json_data, true) ?: [];
 }
-
-// Load students for reference
 $students = [];
 if (file_exists('students.json')) {
     $json_data = file_get_contents('students.json');
     $students = json_decode($json_data, true) ?: [];
 }
-
-// Create student lookup array
 $student_lookup = [];
 foreach ($students as $student) {
     $student_lookup[$student['student_id']] = $student;
@@ -89,7 +82,6 @@ foreach ($students as $student) {
             </table>
             
             <?php
-            // Calculate statistics
             $total = count($attendance_data);
             $present = count(array_filter($attendance_data, function($record) {
                 return $record['status'] === 'present';

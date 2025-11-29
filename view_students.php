@@ -1,5 +1,4 @@
 <?php
-// Load students
 $students = [];
 if (file_exists('students.json')) {
     $json_data = file_get_contents('students.json');

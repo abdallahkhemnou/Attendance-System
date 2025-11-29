@@ -1,10 +1,8 @@
 <?php
-// Check if attendance for today already exists
+
 $today = date('Y-m-d');
 $attendance_file = "attendance_{$today}.json";
 $attendance_taken = file_exists($attendance_file);
-
-// Process form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$attendance_taken) {
     $attendance_data = [];
     
@@ -15,8 +13,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$attendance_taken) {
             'timestamp' => date('Y-m-d H:i:s')
         ];
     }
-    
-    // Save attendance data
     if (file_put_contents($attendance_file, json_encode($attendance_data, JSON_PRETTY_PRINT))) {
         $attendance_taken = true;
         $message = "Attendance for {$today} saved successfully!";
@@ -24,8 +20,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$attendance_taken) {
         $message = "Error saving attendance data!";
     }
 }
-
-// Load students
 $students = [];
 if (file_exists('students.json')) {
     $json_data = file_get_contents('students.json');
